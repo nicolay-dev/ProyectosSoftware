@@ -1,0 +1,32 @@
+H1 {
+    text-align: center;
+}
+
+H2 {
+    text-align: center;
+}
+
+div {
+    text-align: center;
+}
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #1E5CA1;
+}
+
+table,
+th,
+td {
+    background-color: #6C99F2;
+    border: 3px solid black;
+    padding: 0px;
+    text-align: center;
+}
+
+button {
+    background-color: #FFFFFF;
+    color: solid black;
+    width: 100%;
+    padding: 25px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Calculadora</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="resources/scripts.js"></script>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="resources/MyStyles.css">
+    </Style>
+</head>
+
+<body>
+    <div>
+        <h1>Calculadora</h1>
+    </div>
+    <div id=consola>
+    </div>
+    <div id=numeros>
+
+        <table align="center">
+            <tr>
+                <h2 id=n umberh>0</h2>
+            </tr>
+            <tr>
+
+                <td><button onclick="borrar()">C</button></td>
+                <td><button onclick="op('6','inv')">INV</button></td>
+                <td><button onclick="op('7', '%')"> % </button></td>
+                <td><button onclick="op('4','/')">&divide;</button></td>
+
+            </tr>
+            <tr>
+                <td><button onclick="escribir('7')">7</button></td>
+                <td><button onclick="escribir('8')">8</button></td>
+                <td><button onclick="escribir('9')">9</button></td>
+                <td><button onclick="op('3','X')">x</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="escribir('4')">4</button></td>
+                <td><button onclick="escribir('5')">5</button></td>
+                <td><button onclick="escribir('6')">6</button></td>
+                <td><button onclick="op('2','-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="escribir('1')">1</button></td>
+                <td><button onclick="escribir('2')">2</button></td>
+                <td><button onclick="escribir('3')">3</button></td>
+                <td><button onclick="op('1','+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="op('5','+-')">+/-</button></td>
+                <td><button onclick="escribir('0')">0</button></td>
+                <td><button onclick="escribir('.')">,</button></td>
+                <td><button onclick="igual()">=</button></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id=o peraciones>
+
+
+
+    </div>
+
+
+</body>
+
+</html>
