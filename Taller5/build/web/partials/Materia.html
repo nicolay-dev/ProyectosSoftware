@@ -1,0 +1,98 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Materia</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Materia</button>
+</div>
+
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Materia</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    nombre
+                </th>				<th>
+                    creditos
+                </th>
+                <th>
+                    profesor
+                </th>				<th>
+                    carrera
+                </th>
+                <th>
+                    <input class="form-control" ng-model="q"  placeholder="Buscar"/>
+                </th>
+            </tr>
+            <tr dir-paginate="row in lista|filter: q|itemsPerPage:10">
+                <td>{{row.nombre}}</td>
+
+                <td>{{row.creditos}}</td>
+
+
+                <td class="row">{{row.profesor.nombre}}</td>              	<td class="row">{{row.carrera.nombre}}</td>              
+                <td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <div dir-pagination-controls></div>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Materia</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
+                    <label for="nombre">nombre</label>
+                    <input id="nombre" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.nombre"
+                           placeholder="nombre"/>
+                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.creditos ? 'error' : ''">
+                    <label for="creditos">creditos</label>
+                    <input id="creditos" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.creditos"
+                           placeholder="creditos"/>
+                    <div ng-show="errores.creditos">{{errores.creditos}}</div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>profesor</label>
+                    <select id="profesor" class="form-control" 
+                            ng-model="datosFormulario.profesor"
+                            ng-options="option.nombre for option in listaProfesor track by option.id">
+                    </select>
+                    <div ng-show="errores.profesor">{{errores.profesor}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>carrera</label>
+                    <select id="carrera" class="form-control" 
+                            ng-model="datosFormulario.carrera"
+                            ng-options="option.nombre for option in listaCarrera track by option.id">
+                    </select>
+                    <div ng-show="errores.carrera">{{errores.carrera}}</div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+

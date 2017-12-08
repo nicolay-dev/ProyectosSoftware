@@ -1,0 +1,148 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Estudiante</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Estudiante</button>
+</div>
+
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Estudiante</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    nombres
+                </th>				<th>
+                    apellidos
+                </th>				<th>
+                    codigo
+                </th>				<th>
+                    documento
+                </th>				<th>
+                    fechaNacimiento
+                </th>
+                <th>
+                    carrera
+                </th>				<th>
+                    lugarNacimiento
+                </th>
+                <th>
+                    <input class="form-control" ng-model="q"  placeholder="Buscar"/>
+                </th>
+            </tr>
+            <tr dir-paginate="row in lista|filter: q|itemsPerPage:10">
+                <td>{{row.nombres}}</td>
+
+                <td>{{row.apellidos}}</td>
+
+                <td>{{row.codigo}}</td>
+
+                <td>{{row.documento}}</td>
+
+                <td>{{row.fechaNacimiento| date: 'dd/MM/yyyy'}}</td>
+
+
+                <td class="row">{{row.carrera.nombre}}</td>              	<td class="row">{{row.lugarNacimiento.nombre}}</td>              
+                <td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <div dir-pagination-controls></div>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Estudiante</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.nombres ? 'error' : ''">
+                    <label for="nombres">nombres</label>
+                    <input id="nombres" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.nombres"
+                           placeholder="nombres"/>
+                    <div ng-show="errores.nombres">{{errores.nombres}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.apellidos ? 'error' : ''">
+                    <label for="apellidos">apellidos</label>
+                    <input id="apellidos" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.apellidos"
+                           placeholder="apellidos"/>
+                    <div ng-show="errores.apellidos">{{errores.apellidos}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.codigo ? 'error' : ''">
+                    <label for="codigo">codigo</label>
+                    <input id="codigo" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.codigo"
+                           placeholder="codigo"/>
+                    <div ng-show="errores.codigo">{{errores.codigo}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.documento ? 'error' : ''">
+                    <label for="documento">documento</label>
+                    <input id="documento" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.documento"
+                           placeholder="documento"/>
+                    <div ng-show="errores.documento">{{errores.documento}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.fechaNacimiento ? 'error' : ''">
+                    <label for="fechaNacimiento">fechaNacimiento</label>
+                    <div class="input-group">
+                        <input id="fechaNacimiento" 
+                               class="form-control datepicker" 
+                               type="text" 
+                               ng-model="datosFormulario.fechaNacimiento"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <script>
+                        $('#fechaNacimiento').datepicker({format: 'dd/mm/yyyy', language: "es"})
+                                .on('changeDate', function (ev) {
+                                dp_fechaNacimiento.hide();
+                                }).data('datepicker');
+                    </script>
+                    <div ng-show="errores.fechaNacimiento">{{errores.fechaNacimiento}}</div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>carrera</label>
+                    <select id="carrera" class="form-control" 
+                            ng-model="datosFormulario.carrera"
+                            ng-options="option.nombre for option in listaCarrera track by option.id">
+                    </select>
+                    <div ng-show="errores.carrera">{{errores.carrera}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>lugarNacimiento</label>
+                    <select id="lugarNacimiento" class="form-control" 
+                            ng-model="datosFormulario.lugarNacimiento"
+                            ng-options="option.nombre for option in listaLugarNacimiento track by option.id">
+                    </select>
+                    <div ng-show="errores.lugarNacimiento">{{errores.lugarNacimiento}}</div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+

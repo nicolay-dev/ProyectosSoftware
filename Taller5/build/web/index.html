@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="adminTaller4">
+    <head>
+        <title>Aplicaci&oacute;n Taller4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/main.css" rel="stylesheet">
+
+        <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="./js/lib/utils.js"></script>
+
+    </head>
+    <body>
+        <div class="content">
+            <div class="content-header">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Desplegar navegaci�n</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-home"></span></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown">
+                                    Parametrizar <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#/Matricula">Matricula</a></li>
+                                    <li><a href="#/Estudiante">Estudiante</a></li>
+                                    <li><a href="#/Facultad">Facultad</a></li>
+                                    <li><a href="#/Carrera">Carrera</a></li>
+                                    <li><a href="#/Horario">Horario</a></li>
+                                    <li><a href="#/Profesor">Profesor</a></li>
+                                    <li><a href="#/Municipio">Municipio</a></li>
+                                    <li><a href="#/Materia">Materia</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="content-body">
+                <div ng-view=""></div>
+            </div>
+            <div class="content-footer"></div>
+        </div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.0-rc.1/angular-route.js"></script>
+        <script src="http://www.donatosoft.com/libjs/bootstrap-datepicker.js"></script>
+        <script src="http://www.donatosoft.com/libjs/bootstrap-datepicker.es.min.js"></script>
+        <script src="http://www.donatosoft.com/libjs/dirpaginate.js"></script>
+
+
+        <script src="./js/RouteProvider.js"></script>
+
+        <script src="./js/MunicipioController.js"></script>
+        <script src="./js/EstudianteController.js"></script>
+        <script src="./js/CarreraController.js"></script>
+        <script src="./js/MatriculaController.js"></script>
+        <script src="./js/HorarioController.js"></script>
+        <script src="./js/FacultadController.js"></script>
+        <script src="./js/MateriaController.js"></script>
+        <script src="./js/ProfesorController.js"></script>
+
+    </body>
+</html>
+
